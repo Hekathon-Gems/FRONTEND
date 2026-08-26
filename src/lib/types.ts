@@ -181,6 +181,60 @@ export interface WishlistItemResponse {
   createdAt: string;
 }
 
+export interface AboutHeroBlock {
+  heading: string;
+  body: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface AboutStoryBlock {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  ctaLabel: string;
+  ctaHref: string;
+  statBadge: string;
+}
+
+export interface AboutValueItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface AboutValuesBlock {
+  eyebrow: string;
+  heading: string;
+  items: AboutValueItem[];
+}
+
+export interface AboutStatItem {
+  value: string;
+  label: string;
+}
+
+export interface AboutStatsBlock {
+  items: AboutStatItem[];
+}
+
+export interface AboutCommitmentBlock {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  checklist: string[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface AboutContent {
+  hero?: AboutHeroBlock;
+  our_story?: AboutStoryBlock;
+  values?: AboutValuesBlock;
+  stats?: AboutStatsBlock;
+  commitment?: AboutCommitmentBlock;
+}
+
 export interface CatalogQuery {
   category?: string;
   gemType?: string;

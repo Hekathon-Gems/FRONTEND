@@ -1,4 +1,5 @@
 import type {
+  AboutContent,
   BlogListResponse,
   BlogPost,
   CatalogQuery,
@@ -82,6 +83,14 @@ export function getBlogPosts(
 
 export function getBlogPost(slug: string): Promise<BlogPost> {
   return apiFetch(`/blog/posts/${encodeURIComponent(slug)}`);
+}
+
+export function getBlogCategories(): Promise<RefSlug[]> {
+  return apiFetch("/blog/categories");
+}
+
+export function getAboutContent(): Promise<AboutContent> {
+  return apiFetch("/content/about");
 }
 
 export function getOrderByNumber(orderNumber: string): Promise<OrderResponse> {
