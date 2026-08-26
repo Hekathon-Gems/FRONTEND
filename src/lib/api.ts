@@ -3,6 +3,7 @@ import type {
   BlogPost,
   CatalogQuery,
   CategoryWithCount,
+  OrderResponse,
   Product,
   ProductListResponse,
   RefSlug,
@@ -81,4 +82,8 @@ export function getBlogPosts(
 
 export function getBlogPost(slug: string): Promise<BlogPost> {
   return apiFetch(`/blog/posts/${encodeURIComponent(slug)}`);
+}
+
+export function getOrderByNumber(orderNumber: string): Promise<OrderResponse> {
+  return apiFetch(`/orders/${encodeURIComponent(orderNumber)}`, false);
 }
