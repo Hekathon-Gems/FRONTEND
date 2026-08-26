@@ -109,3 +109,14 @@ export function applyCoupon(code: string): Promise<CartResponse> {
 export function cartItemCount(cart: CartResponse): number {
   return cart.items.reduce((sum, item) => sum + item.quantity, 0);
 }
+
+// Merges the guest cart (identified by the cart_id cookie) into the
+// now-logged-in user's cart. Requires a Bearer token — call right after
+// login/register succeeds, before the guest cookie is cleared server-side.
+export function mergeGuestCart(): Promise<CartResponse> {
+  return cartRequest(
+    "/cart/merge",
+    { method: "POST", body: JSON.stringify({}) },
+    "Could not merge your cart.",
+  );
+}

@@ -101,7 +101,7 @@ export interface ShippingAddress {
 }
 
 export type OrderStatus =
-  "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+  "pending" | "processing" | "shipped" | "delivered" | "cancelled" | "refunded";
 
 export interface OrderStatusHistoryEntry {
   status: string;
@@ -138,6 +138,47 @@ export interface CheckoutSessionResponse {
   id: string;
   clientSecret: string;
   order: OrderResponse;
+}
+
+export interface PublicUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string | null;
+  role: string;
+  profileImageUrl: string | null;
+  emailNotifications: boolean;
+  smsNotifications: boolean;
+  marketingEmails: boolean;
+  createdAt: string;
+}
+
+export interface OrderListResponse {
+  data: OrderResponse[];
+  meta: { page: number; limit: number; total: number; totalPages: number };
+}
+
+export interface Address {
+  id: string;
+  fullName: string;
+  phone: string;
+  addressLine1: string;
+  addressLine2: string | null;
+  city: string;
+  state: string | null;
+  postalCode: string;
+  country: string;
+  isDefault: boolean;
+  label: string | null;
+  createdAt: string;
+}
+
+export interface WishlistItemResponse {
+  id: string;
+  productId: string;
+  product: Product;
+  createdAt: string;
 }
 
 export interface CatalogQuery {

@@ -3,30 +3,57 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingBag, Check } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import { ShoppingBag, Check, Heart } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
 import { addToCart, cartItemCount } from "@/lib/cart-client";
+import { addToWishlist } from "@/lib/wishlist-client";
 import { useCartStore } from "@/store/cart-store";
+import { useIsLoggedIn } from "@/lib/use-is-logged-in";
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
   const isSoldOut =
     product.stockStatus === "out_of_stock" || product.stockStatus === "sold";
-  const [status, setStatus] = useState<"idle" | "adding" | "added">("idle");
+  const [cartStatus, setCartStatus] = useState<"idle" | "adding" | "added">(
+    "idle",
+  );
+  const [wishlistStatus, setWishlistStatus] = useState<
+    "idle" | "adding" | "added"
+  >("idle");
   const setItemCount = useCartStore((state) => state.setItemCount);
+  const isLoggedIn = useIsLoggedIn();
+  const router = useRouter();
+  const pathname = usePathname();
 
   async function handleQuickAdd(e: React.MouseEvent) {
     e.preventDefault();
-    if (status === "adding") return;
-    setStatus("adding");
+    if (cartStatus === "adding") return;
+    setCartStatus("adding");
     try {
       const cart = await addToCart(product.id, 1);
       setItemCount(cartItemCount(cart));
-      setStatus("added");
-      setTimeout(() => setStatus("idle"), 1500);
+      setCartStatus("added");
+      setTimeout(() => setCartStatus("idle"), 1500);
     } catch {
-      setStatus("idle");
+      setCartStatus("idle");
+    }
+  }
+
+  async function handleWishlist(e: React.MouseEvent) {
+    e.preventDefault();
+    if (!isLoggedIn) {
+      router.push(`/sign-in?redirect=${encodeURIComponent(pathname)}`);
+      return;
+    }
+    if (wishlistStatus === "adding") return;
+    setWishlistStatus("adding");
+    try {
+      await addToWishlist(product.id);
+      setWishlistStatus("added");
+    } catch {
+      setWishlistStatus("idle");
     }
   }
 
@@ -55,6 +82,22 @@ export function ProductCard({ product }: { product: Product }) {
               Sold Out
             </span>
           )}
+          <button
+            type="button"
+            aria-label="Add to wishlist"
+            title="Add to wishlist"
+            onClick={handleWishlist}
+            className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-bg-white/90 text-text-primary-dark opacity-0 transition-opacity group-hover:opacity-100"
+          >
+            <Heart
+              className={
+                wishlistStatus === "added"
+                  ? "h-4 w-4 fill-current text-danger"
+                  : "h-4 w-4"
+              }
+              strokeWidth={1.5}
+            />
+          </button>
           {!isSoldOut && (
             <button
               type="button"
@@ -63,7 +106,7 @@ export function ProductCard({ product }: { product: Product }) {
               onClick={handleQuickAdd}
               className="absolute bottom-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-bg-white/90 text-text-primary-dark opacity-0 transition-opacity group-hover:opacity-100"
             >
-              {status === "added" ? (
+              {cartStatus === "added" ? (
                 <Check className="h-4 w-4 text-success" strokeWidth={1.5} />
               ) : (
                 <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
