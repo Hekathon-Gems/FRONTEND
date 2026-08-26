@@ -37,6 +37,7 @@ export interface Product {
   stockQuantity: number;
   stockStatus: "in_stock" | "low_stock" | "out_of_stock" | "sold";
   isFeatured: boolean;
+  isActive: boolean;
   images: ProductImage[];
   createdAt: string;
 }
