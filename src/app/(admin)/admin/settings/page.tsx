@@ -301,6 +301,7 @@ export default function AdminSettingsPage() {
                     <td className="px-4 py-3">
                       {u.role === "admin" || u.role === "staff" ? (
                         <select
+                          aria-label={`Role for ${u.firstName} ${u.lastName}`}
                           value={u.role}
                           onChange={(e) =>
                             handleRoleChange(
@@ -385,6 +386,7 @@ export default function AdminSettingsPage() {
                 className={FIELD_CLASSES}
               />
               <select
+                aria-label="Role"
                 value={newStaff.role}
                 onChange={(e) =>
                   setNewStaff({

@@ -134,7 +134,7 @@ export default function AdminBlogPage() {
                     <button
                       type="button"
                       onClick={() => handlePublish(post.id)}
-                      className="mr-2 text-accent-gold hover:underline"
+                      className="mr-2 text-accent-gold-text underline"
                     >
                       Publish
                     </button>
@@ -143,7 +143,7 @@ export default function AdminBlogPage() {
                     <button
                       type="button"
                       onClick={() => handleUnpublish(post.id)}
-                      className="mr-2 text-accent-gold hover:underline"
+                      className="mr-2 text-accent-gold-text underline"
                     >
                       Unpublish
                     </button>

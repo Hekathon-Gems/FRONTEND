@@ -133,7 +133,7 @@ export default function SavedAddressesPage() {
                     </p>
                   </div>
                   {address.isDefault && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-accent-gold/10 px-3 py-1 text-xs font-medium text-accent-gold-dark">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-accent-gold/10 px-3 py-1 text-xs font-medium text-accent-gold-text">
                       <Star className="h-3 w-3" strokeWidth={2} />
                       Default
                     </span>
@@ -156,7 +156,7 @@ export default function SavedAddressesPage() {
                     <button
                       type="button"
                       onClick={() => handleSetDefault(address.id)}
-                      className="text-accent-gold hover:underline"
+                      className="text-accent-gold-text underline"
                     >
                       Set as Default
                     </button>

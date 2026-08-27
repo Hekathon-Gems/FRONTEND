@@ -19,6 +19,7 @@ import {
 } from "@/lib/checkout-client";
 import { useCartStore } from "@/store/cart-store";
 import { useIsLoggedIn } from "@/lib/use-is-logged-in";
+import { trackBeginCheckout } from "@/lib/analytics";
 import type { CheckoutSessionResponse, OrderResponse } from "@/lib/types";
 
 const STRIPE_PUBLISHABLE_KEY =
@@ -69,7 +70,21 @@ export function CheckoutFlow() {
 
   useEffect(() => {
     getCart()
-      .then(setCart)
+      .then((loaded) => {
+        setCart(loaded);
+        if (loaded.items.length > 0) {
+          trackBeginCheckout(
+            "USD",
+            loaded.subtotal / 100,
+            loaded.items.map((item) => ({
+              item_id: item.product?.sku ?? item.productId,
+              item_name: item.product?.name ?? "Unknown item",
+              price: item.unitPrice / 100,
+              quantity: item.quantity,
+            })),
+          );
+        }
+      })
       .catch(() =>
         setCartError(
           "We couldn't load your cart. Please refresh and try again.",

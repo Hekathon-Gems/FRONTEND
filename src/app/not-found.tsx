@@ -3,7 +3,7 @@ import { LinkButton } from "@/components/ui/Button";
 export default function NotFound() {
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold-text">
         404
       </p>
       <h1 className="mt-4 font-heading text-2xl text-text-primary-dark sm:text-3xl">

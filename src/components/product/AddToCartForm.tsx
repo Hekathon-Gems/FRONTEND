@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { addToCart, cartItemCount } from "@/lib/cart-client";
 import { useCartStore } from "@/store/cart-store";
+import { trackAddToCart } from "@/lib/analytics";
 import type { Product } from "@/lib/types";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -29,6 +30,14 @@ export function AddToCartForm({ product }: { product: Product }) {
       const cart = await addToCart(product.id, quantity);
       setItemCount(cartItemCount(cart));
       setStatus("success");
+      trackAddToCart(product.currency, (product.price * quantity) / 100, [
+        {
+          item_id: product.sku,
+          item_name: product.name,
+          price: product.price / 100,
+          quantity,
+        },
+      ]);
       if (redirectToCheckout) router.push("/cart");
     } catch (err) {
       setStatus("error");

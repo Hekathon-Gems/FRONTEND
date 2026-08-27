@@ -65,7 +65,7 @@ export default function AdminCustomersPage() {
                 <td className="px-4 py-3">
                   <Link
                     href={`/admin/customers/${customer.id}`}
-                    className="font-medium text-accent-gold hover:underline"
+                    className="font-medium text-accent-gold-text underline"
                   >
                     {customer.firstName} {customer.lastName}
                   </Link>

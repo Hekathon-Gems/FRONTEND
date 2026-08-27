@@ -118,7 +118,7 @@ export function CategoriesTab() {
                   <button
                     type="button"
                     onClick={() => startEdit(row)}
-                    className="mr-3 text-accent-gold hover:underline"
+                    className="mr-3 text-accent-gold-text underline"
                   >
                     Edit
                   </button>

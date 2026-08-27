@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -28,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-bg-cream text-text-primary-dark">
         <SiteChrome>{children}</SiteChrome>
       </body>
+      {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   );
 }

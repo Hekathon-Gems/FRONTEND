@@ -78,7 +78,7 @@ export function FilterSidebar({
         {hasActiveFilters && (
           <Link
             href="/gems"
-            className="text-xs text-accent-gold hover:underline"
+            className="text-xs text-accent-gold-text underline"
           >
             Clear All
           </Link>
@@ -103,7 +103,7 @@ export function FilterSidebar({
                 className={clsx(
                   "flex w-full items-center justify-between text-sm",
                   activeCategory === cat.slug
-                    ? "font-semibold text-accent-gold"
+                    ? "font-semibold text-accent-gold-text"
                     : "text-text-primary-dark hover:text-accent-gold",
                 )}
               >
@@ -144,7 +144,7 @@ export function FilterSidebar({
           <button
             type="button"
             onClick={() => setShowAllGemTypes((v) => !v)}
-            className="mt-2 text-xs text-accent-gold hover:underline"
+            className="mt-2 text-xs text-accent-gold-text underline"
           >
             {showAllGemTypes ? "Show Less" : "+ Show More"}
           </button>
@@ -179,7 +179,7 @@ export function FilterSidebar({
           <button
             type="button"
             onClick={() => setShowAllShapes((v) => !v)}
-            className="mt-2 text-xs text-accent-gold hover:underline"
+            className="mt-2 text-xs text-accent-gold-text underline"
           >
             {showAllShapes ? "Show Less" : "+ Show More"}
           </button>

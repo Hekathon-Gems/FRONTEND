@@ -43,7 +43,7 @@ export function ProductGallery({
               href={active.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent-gold hover:underline"
+              className="text-sm text-accent-gold-text underline"
             >
               View Certificate
             </a>

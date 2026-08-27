@@ -145,20 +145,20 @@ export default function ContactPage() {
                 <p className="text-sm font-medium text-text-primary-dark">
                   Follow Us
                 </p>
-                <div className="mt-2 flex gap-4 text-sm text-accent-gold">
+                <div className="mt-2 flex gap-4 text-sm text-accent-gold-text">
                   <a
                     href="https://instagram.com/gemora_gems"
-                    className="hover:underline"
+                    className="underline"
                   >
                     Instagram
                   </a>
-                  <a href="#" className="hover:underline">
+                  <a href="#" className="underline">
                     Facebook
                   </a>
-                  <a href="#" className="hover:underline">
+                  <a href="#" className="underline">
                     Pinterest
                   </a>
-                  <a href="#" className="hover:underline">
+                  <a href="#" className="underline">
                     YouTube
                   </a>
                 </div>

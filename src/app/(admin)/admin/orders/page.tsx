@@ -58,6 +58,7 @@ export default function AdminOrdersPage() {
           className="h-10 min-w-[220px] flex-1 rounded-sm border border-border bg-bg-white px-3 text-sm focus:border-accent-gold focus:outline-none"
         />
         <select
+          aria-label="Filter by status"
           value={status}
           onChange={(e) => {
             setStatus(e.target.value as OrderStatus | "");
@@ -115,7 +116,7 @@ export default function AdminOrdersPage() {
                 <td className="px-4 py-3">
                   <Link
                     href={`/admin/orders/${order.id}`}
-                    className="text-accent-gold hover:underline"
+                    className="text-accent-gold-text underline"
                   >
                     View
                   </Link>

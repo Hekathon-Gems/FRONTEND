@@ -10,7 +10,7 @@ export function PromoBanners() {
           </p>
           <Link
             href="/gems?sort=newest"
-            className="mt-3 text-sm font-medium text-accent-gold hover:underline"
+            className="mt-3 text-sm font-medium text-accent-gold underline"
           >
             EXPLORE →
           </Link>
@@ -21,7 +21,7 @@ export function PromoBanners() {
           </p>
           <Link
             href="/collections"
-            className="mt-3 text-sm font-medium text-accent-gold hover:underline"
+            className="mt-3 text-sm font-medium text-accent-gold underline"
           >
             EXPLORE →
           </Link>

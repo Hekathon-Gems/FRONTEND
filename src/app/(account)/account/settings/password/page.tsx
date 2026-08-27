@@ -65,7 +65,7 @@ export default function ChangePasswordPage() {
           </p>
         )}
 
-        <div className="flex flex-col gap-1.5">
+        <label className="flex flex-col gap-1.5">
           <span className="text-xs font-medium text-text-muted">
             Current Password
           </span>
@@ -75,9 +75,9 @@ export default function ChangePasswordPage() {
             onChange={setCurrentPassword}
             autoComplete="current-password"
           />
-        </div>
+        </label>
 
-        <div className="mt-4 flex flex-col gap-1.5">
+        <label className="mt-4 flex flex-col gap-1.5">
           <span className="text-xs font-medium text-text-muted">
             New Password
           </span>
@@ -88,7 +88,7 @@ export default function ChangePasswordPage() {
             autoComplete="new-password"
           />
           <PasswordRulesChecklist password={newPassword} />
-        </div>
+        </label>
 
         <Button
           type="submit"

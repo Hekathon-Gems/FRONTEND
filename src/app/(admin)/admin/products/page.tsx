@@ -100,6 +100,7 @@ export default function AdminProductsPage() {
           className="h-10 flex-1 min-w-[180px] rounded-sm border border-border bg-bg-white px-3 text-sm focus:border-accent-gold focus:outline-none"
         />
         <select
+          aria-label="Filter by category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="h-10 rounded-sm border border-border bg-bg-white px-2 text-sm"
@@ -112,6 +113,7 @@ export default function AdminProductsPage() {
           ))}
         </select>
         <select
+          aria-label="Filter by gem type"
           value={gemType}
           onChange={(e) => setGemType(e.target.value)}
           className="h-10 rounded-sm border border-border bg-bg-white px-2 text-sm"
@@ -124,6 +126,7 @@ export default function AdminProductsPage() {
           ))}
         </select>
         <select
+          aria-label="Filter by stock status"
           value={stockStatus}
           onChange={(e) => setStockStatus(e.target.value)}
           className="h-10 rounded-sm border border-border bg-bg-white px-2 text-sm"
@@ -136,6 +139,7 @@ export default function AdminProductsPage() {
           ))}
         </select>
         <select
+          aria-label="Filter by active status"
           value={active}
           onChange={(e) => setActive(e.target.value)}
           className="h-10 rounded-sm border border-border bg-bg-white px-2 text-sm"
@@ -152,14 +156,14 @@ export default function AdminProductsPage() {
           <button
             type="button"
             onClick={() => handleBulk(true)}
-            className="text-accent-gold hover:underline"
+            className="text-accent-gold-text underline"
           >
             Activate
           </button>
           <button
             type="button"
             onClick={() => handleBulk(false)}
-            className="text-accent-gold hover:underline"
+            className="text-accent-gold-text underline"
           >
             Deactivate
           </button>
@@ -190,6 +194,7 @@ export default function AdminProductsPage() {
                 <td className="px-4 py-3">
                   <input
                     type="checkbox"
+                    aria-label={`Select ${product.name}`}
                     checked={selected.has(product.id)}
                     onChange={() => toggleSelected(product.id)}
                     className="h-4 w-4 accent-accent-gold"
@@ -244,7 +249,7 @@ export default function AdminProductsPage() {
                 <td className="px-4 py-3">
                   <Link
                     href={`/admin/products/${product.id}`}
-                    className="text-accent-gold hover:underline"
+                    className="text-accent-gold-text underline"
                   >
                     Edit
                   </Link>

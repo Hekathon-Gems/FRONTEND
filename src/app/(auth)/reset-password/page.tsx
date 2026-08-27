@@ -72,7 +72,7 @@ function ResetPasswordForm() {
       )}
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-        <div className="flex flex-col gap-1.5">
+        <label className="flex flex-col gap-1.5">
           <span className="text-xs font-medium text-text-muted">
             New Password
           </span>
@@ -84,7 +84,7 @@ function ResetPasswordForm() {
             autoComplete="new-password"
           />
           <PasswordRulesChecklist password={password} />
-        </div>
+        </label>
         <Button
           type="submit"
           variant="primary"
@@ -96,7 +96,7 @@ function ResetPasswordForm() {
       </form>
 
       <p className="mt-6 text-center text-sm text-text-muted">
-        <Link href="/sign-in" className="text-accent-gold hover:underline">
+        <Link href="/sign-in" className="text-accent-gold-text underline">
           Back to Sign In
         </Link>
       </p>

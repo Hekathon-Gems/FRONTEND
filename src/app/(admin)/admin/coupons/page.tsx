@@ -114,6 +114,7 @@ export default function AdminCouponsPage() {
               className={FIELD_CLASSES}
             />
             <select
+              aria-label="Discount type"
               value={discountType}
               onChange={(e) =>
                 setDiscountType(e.target.value as "percentage" | "fixed")
@@ -216,7 +217,7 @@ export default function AdminCouponsPage() {
                     <button
                       type="button"
                       onClick={() => startEdit(row)}
-                      className="mr-3 text-accent-gold hover:underline"
+                      className="mr-3 text-accent-gold-text underline"
                     >
                       Edit
                     </button>

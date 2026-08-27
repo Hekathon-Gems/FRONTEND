@@ -33,7 +33,7 @@ export function OrderSummaryPanel({
         <h2 className="font-heading text-lg text-text-primary-dark">
           Order Summary
         </h2>
-        <Link href="/cart" className="text-xs text-accent-gold hover:underline">
+        <Link href="/cart" className="text-xs text-accent-gold-text underline">
           Edit Cart
         </Link>
       </div>

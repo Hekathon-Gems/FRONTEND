@@ -98,7 +98,7 @@ export default function AdminOrderDetailPage() {
       <button
         type="button"
         onClick={() => router.push("/admin/orders")}
-        className="inline-flex items-center gap-1.5 text-sm text-accent-gold hover:underline"
+        className="inline-flex items-center gap-1.5 text-sm text-accent-gold-text underline"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
         Back to Orders
@@ -214,6 +214,7 @@ export default function AdminOrderDetailPage() {
               )}
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <select
+                  aria-label="New status"
                   value={newStatus}
                   onChange={(e) => setNewStatus(e.target.value)}
                   className="h-10 rounded-sm border border-border bg-bg-white px-2 text-sm"
@@ -312,7 +313,7 @@ export default function AdminOrderDetailPage() {
             {order.customer.id && (
               <Link
                 href={`/admin/customers/${order.customer.id}`}
-                className="mt-2 inline-block text-sm text-accent-gold hover:underline"
+                className="mt-2 inline-block text-sm text-accent-gold-text underline"
               >
                 View Customer Profile →
               </Link>

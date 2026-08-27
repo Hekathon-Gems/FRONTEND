@@ -8,20 +8,33 @@
 
   --color-accent-gold: #c9a24b;
   --color-accent-gold-dark: #a9832f;
+  /* WCAG AA text color (4.5:1+ on white/cream, with margin) for accent-gold
+     used as body-text-sized links on light backgrounds — accent-gold itself
+     only reaches ~2.4:1 there and is reserved for large text, icons,
+     buttons, and text on dark backgrounds where it already passes
+     comfortably. */
+  --color-accent-gold-text: #7d5f17;
 
   --color-text-primary-dark: #1a1a1a;
   --color-text-primary-light: #ffffff;
-  --color-text-muted: #6b7280;
+  /* Darkened from #6b7280 — the original only cleared WCAG AA's 4.5:1 text
+     contrast against white (4.83:1), not against bg-cream (4.37:1), which
+     is where most body copy actually sits. */
+  --color-text-muted: #646d78;
   --color-text-muted-light: #b8b8b0;
 
   --color-border: #e5e1d8;
   --color-border-dark: #2a302c;
 
-  --color-success: #1e8e5a;
+  /* success/warning/info darkened from their original values, which fell
+     short of WCAG AA's 4.5:1 text contrast on cream/white backgrounds
+     (and, for warning, against its own -bg tint too). danger already
+     passed and is unchanged. */
+  --color-success: #16693f;
   --color-success-bg: #e4f5ec;
-  --color-info: #2563eb;
+  --color-info: #1d4fc4;
   --color-info-bg: #e8eefd;
-  --color-warning: #b7791f;
+  --color-warning: #8a5a14;
   --color-warning-bg: #fbf0de;
   --color-danger: #c0392b;
   --color-danger-bg: #fbe9e7;
@@ -64,6 +77,7 @@
   --color-bg-white: var(--color-bg-white);
   --color-accent-gold: var(--color-accent-gold);
   --color-accent-gold-dark: var(--color-accent-gold-dark);
+  --color-accent-gold-text: var(--color-accent-gold-text);
   --color-text-primary-dark: var(--color-text-primary-dark);
   --color-text-primary-light: var(--color-text-primary-light);
   --color-text-muted: var(--color-text-muted);

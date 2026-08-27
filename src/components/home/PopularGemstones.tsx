@@ -20,7 +20,7 @@ export function PopularGemstones({ products }: { products: Product[] }) {
           </div>
           <Link
             href="/gems"
-            className="whitespace-nowrap text-sm text-accent-gold hover:underline"
+            className="whitespace-nowrap text-sm text-accent-gold-text underline"
           >
             View all gems →
           </Link>

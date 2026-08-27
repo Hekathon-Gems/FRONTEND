@@ -26,7 +26,7 @@ export default function AccountOrderDetailPage() {
     <div>
       <Link
         href="/account/orders"
-        className="inline-flex items-center gap-1.5 text-sm text-accent-gold hover:underline"
+        className="inline-flex items-center gap-1.5 text-sm text-accent-gold-text underline"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
         Back to Order History

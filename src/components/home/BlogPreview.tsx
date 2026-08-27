@@ -11,7 +11,7 @@ export function BlogPreview({ posts }: { posts: BlogPost[] }) {
         <h2 className="font-heading text-2xl text-text-primary-dark sm:text-3xl">
           From Our Blog
         </h2>
-        <Link href="/blog" className="text-sm text-accent-gold hover:underline">
+        <Link href="/blog" className="text-sm text-accent-gold-text underline">
           View all articles →
         </Link>
       </div>

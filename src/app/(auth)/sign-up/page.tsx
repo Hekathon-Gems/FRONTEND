@@ -106,7 +106,7 @@ function SignUpForm() {
           />
         </label>
 
-        <div className="flex flex-col gap-1.5">
+        <label className="flex flex-col gap-1.5">
           <span className="text-xs font-medium text-text-muted">Password</span>
           <PasswordField
             id="password"
@@ -116,7 +116,7 @@ function SignUpForm() {
             autoComplete="new-password"
           />
           <PasswordRulesChecklist password={password} />
-        </div>
+        </label>
 
         <Button
           type="submit"
@@ -140,7 +140,7 @@ function SignUpForm() {
 
       <p className="mt-6 text-center text-sm text-text-muted">
         Already have an account?{" "}
-        <Link href="/sign-in" className="text-accent-gold hover:underline">
+        <Link href="/sign-in" className="text-accent-gold-text underline">
           Sign In
         </Link>
       </p>

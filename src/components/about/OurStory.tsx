@@ -13,7 +13,7 @@ export function OurStory({ block }: { block: AboutStoryBlock }) {
           <Gem className="h-16 w-16" strokeWidth={1} />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold-text">
             {block.eyebrow}
           </p>
           <h2 className="mt-4 font-heading text-3xl text-text-primary-dark">
@@ -26,7 +26,7 @@ export function OurStory({ block }: { block: AboutStoryBlock }) {
             <LinkButton href={block.ctaHref} variant="primary">
               {block.ctaLabel}
             </LinkButton>
-            <span className="font-heading text-lg text-accent-gold">
+            <span className="font-heading text-lg text-accent-gold-text">
               {block.statBadge}
             </span>
           </div>

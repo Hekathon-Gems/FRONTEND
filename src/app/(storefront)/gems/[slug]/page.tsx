@@ -14,7 +14,10 @@ import { AddToCartForm } from "@/components/product/AddToCartForm";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { Accordion } from "@/components/ui/Accordion";
 import { NewsletterForm } from "@/components/layout/NewsletterForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { formatPrice, stockStatusLabel } from "@/lib/format";
+import { absoluteUrl } from "@/lib/site";
+import type { Product } from "@/lib/types";
 
 export const revalidate = 60;
 
@@ -74,6 +77,62 @@ export async function generateMetadata({
     title: `${product.name} | Gemora Fine Gems`,
     description:
       product.shortDescription ?? product.longDescription ?? undefined,
+    alternates: { canonical: absoluteUrl(`/gems/${product.slug}`) },
+  };
+}
+
+const AVAILABILITY_SCHEMA: Record<Product["stockStatus"], string> = {
+  in_stock: "https://schema.org/InStock",
+  low_stock: "https://schema.org/LimitedAvailability",
+  out_of_stock: "https://schema.org/OutOfStock",
+  sold: "https://schema.org/SoldOut",
+};
+
+function buildProductJsonLd(product: Product) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    sku: product.sku,
+    description:
+      product.shortDescription ?? product.longDescription ?? undefined,
+    image: product.images.map((img) => img.url),
+    brand: { "@type": "Brand", name: "Gemora Fine Gems" },
+    category: product.category?.name ?? undefined,
+    offers: {
+      "@type": "Offer",
+      url: absoluteUrl(`/gems/${product.slug}`),
+      priceCurrency: product.currency,
+      price: (product.price / 100).toFixed(2),
+      availability: AVAILABILITY_SCHEMA[product.stockStatus],
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
+}
+
+function buildBreadcrumbJsonLd(product: Product) {
+  const items = [
+    { name: "Home", path: "/" },
+    { name: "Gems", path: "/gems" },
+    ...(product.gemType
+      ? [
+          {
+            name: product.gemType.name,
+            path: `/gems?gemType=${product.gemType.slug}`,
+          },
+        ]
+      : []),
+    { name: product.name, path: `/gems/${product.slug}` },
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
   };
 }
 
@@ -124,6 +183,9 @@ export default async function ProductDetailPage({
 
   return (
     <>
+      <JsonLd data={buildProductJsonLd(product)} />
+      <JsonLd data={buildBreadcrumbJsonLd(product)} />
+
       <div className="mx-auto max-w-[1280px] px-4 pt-6 sm:px-6">
         <p className="text-xs text-text-muted">
           <Link href="/" className="hover:text-accent-gold">
@@ -153,7 +215,7 @@ export default async function ProductDetailPage({
         <ProductGallery images={product.images} productName={product.name} />
 
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-gold/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent-gold-dark">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-gold/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent-gold-text">
             Certified & Authentic
           </span>
           <h1 className="mt-4 font-heading text-3xl text-text-primary-dark">

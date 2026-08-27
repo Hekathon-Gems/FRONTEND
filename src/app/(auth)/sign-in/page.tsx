@@ -72,7 +72,7 @@ function SignInForm() {
           />
         </label>
 
-        <div className="flex flex-col gap-1.5">
+        <label className="flex flex-col gap-1.5">
           <span className="text-xs font-medium text-text-muted">Password</span>
           <PasswordField
             id="password"
@@ -81,12 +81,12 @@ function SignInForm() {
             placeholder="Enter your password"
             autoComplete="current-password"
           />
-        </div>
+        </label>
 
         <div className="text-right">
           <Link
             href="/forgot-password"
-            className="text-xs text-accent-gold hover:underline"
+            className="text-xs text-accent-gold-text underline"
           >
             Forgot Password?
           </Link>
@@ -114,7 +114,7 @@ function SignInForm() {
 
       <p className="mt-6 text-center text-sm text-text-muted">
         Don&apos;t have an account?{" "}
-        <Link href="/sign-up" className="text-accent-gold hover:underline">
+        <Link href="/sign-up" className="text-accent-gold-text underline">
           Create Account
         </Link>
       </p>

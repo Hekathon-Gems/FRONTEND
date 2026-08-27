@@ -11,7 +11,7 @@ export function RelatedProducts({ products }: { products: Product[] }) {
         <h2 className="font-heading text-2xl text-text-primary-dark sm:text-3xl">
           You May Also Like
         </h2>
-        <Link href="/gems" className="text-sm text-accent-gold hover:underline">
+        <Link href="/gems" className="text-sm text-accent-gold-text underline">
           View All →
         </Link>
       </div>

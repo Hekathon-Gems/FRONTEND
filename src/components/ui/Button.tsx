@@ -11,7 +11,7 @@ const VARIANT_CLASSES: Record<Variant, string> = {
     "bg-transparent text-bg-dark border border-accent-gold hover:bg-accent-gold/10",
   "outline-light":
     "bg-transparent text-text-primary-light border border-white hover:bg-white/10",
-  ghost: "bg-transparent text-accent-gold hover:underline px-0",
+  ghost: "bg-transparent text-accent-gold-text underline px-0",
 };
 
 const BASE_CLASSES =

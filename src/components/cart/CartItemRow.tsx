@@ -42,6 +42,7 @@ export function CartItemRow({
     <div className="flex gap-4 border-b border-border py-6 first:pt-0 last:border-b-0">
       <Link
         href={item.product ? `/gems/${item.product.slug}` : "#"}
+        aria-label={item.product?.name ?? "View product"}
         className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-bg-dark"
       >
         {item.product?.image ? (

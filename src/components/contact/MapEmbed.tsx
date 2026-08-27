@@ -34,7 +34,7 @@ export function MapEmbed() {
           href={DIRECTIONS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-block text-sm text-accent-gold hover:underline"
+          className="mt-2 inline-block text-sm text-accent-gold-text underline"
         >
           Get Directions →
         </a>

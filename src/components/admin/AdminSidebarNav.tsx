@@ -131,7 +131,7 @@ export function AdminSidebarNav({ role }: { role: string }) {
         <button
           type="button"
           onClick={handleLogout}
-          className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm text-danger hover:bg-danger-bg/10"
+          className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm text-text-muted-light hover:bg-danger-bg/10 hover:text-danger"
         >
           <LogOut className="h-4 w-4" strokeWidth={1.5} />
           Logout

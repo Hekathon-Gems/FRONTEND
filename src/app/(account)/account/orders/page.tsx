@@ -104,7 +104,7 @@ export default function OrderHistoryPage() {
                     <td className="px-4 py-3">
                       <Link
                         href={`/account/orders/${encodeURIComponent(order.orderNumber)}`}
-                        className="text-accent-gold hover:underline"
+                        className="text-accent-gold-text underline"
                       >
                         View Details →
                       </Link>

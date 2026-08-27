@@ -43,7 +43,7 @@ export default function AdminCustomerDetailPage() {
       <button
         type="button"
         onClick={() => router.push("/admin/customers")}
-        className="inline-flex items-center gap-1.5 text-sm text-accent-gold hover:underline"
+        className="inline-flex items-center gap-1.5 text-sm text-accent-gold-text underline"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
         Back to Customers
@@ -136,7 +136,7 @@ export default function AdminCustomerDetailPage() {
                   <p className="font-medium text-text-primary-dark">
                     {address.fullName}{" "}
                     {address.isDefault && (
-                      <span className="text-accent-gold">(Default)</span>
+                      <span className="text-accent-gold-text">(Default)</span>
                     )}
                   </p>
                   <p className="text-text-muted">{address.addressLine1}</p>

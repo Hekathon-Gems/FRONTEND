@@ -43,7 +43,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {formatDate(post.publishedAt)}
           {post.readTimeMinutes ? ` · ${post.readTimeMinutes} min read` : ""}
         </p>
-        <span className="mt-2 inline-block text-sm text-accent-gold">
+        <span className="mt-2 inline-block text-sm text-accent-gold-text underline">
           Read More →
         </span>
       </div>

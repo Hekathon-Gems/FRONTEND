@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CheckCircle2, Phone, Mail } from "lucide-react";
 import { getOrderByNumber, NotFoundApiError } from "@/lib/api";
 import { OrderTimeline } from "@/components/orders/OrderTimeline";
+import { PurchaseTracker } from "@/components/analytics/PurchaseTracker";
 import { LinkButton } from "@/components/ui/Button";
 import { formatDate, formatPrice } from "@/lib/format";
 
@@ -21,6 +22,8 @@ export default async function OrderConfirmationPage({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+      <PurchaseTracker order={order} />
+
       <p className="text-xs text-text-muted">
         <Link href="/" className="hover:text-accent-gold">
           Home

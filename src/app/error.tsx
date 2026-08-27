@@ -1,13 +1,20 @@
 "use client";
 
+import { useEffect } from "react";
+import * as Sentry from "@sentry/nextjs";
 import { Button } from "@/components/ui/Button";
 
 export default function ErrorBoundary({
+  error,
   retry,
 }: {
   error: Error & { digest?: string };
   retry: () => void;
 }) {
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
+
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 text-center">
       <h1 className="font-heading text-2xl text-text-primary-dark sm:text-3xl">
@@ -17,7 +24,7 @@ export default function ErrorBoundary({
         Please try again in a moment. If this keeps happening, contact us at{" "}
         <a
           href="mailto:hello@gemora.com"
-          className="text-accent-gold hover:underline"
+          className="text-accent-gold-text underline"
         >
           hello@gemora.com
         </a>

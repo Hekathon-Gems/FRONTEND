@@ -25,6 +25,7 @@ export function Pagination({
       <Link
         href={buildHref(Math.max(1, page - 1))}
         aria-disabled={page === 1}
+        aria-label="Previous page"
         className={clsx(
           "flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-primary-dark hover:border-accent-gold",
           page === 1 && "pointer-events-none opacity-40",
@@ -57,6 +58,7 @@ export function Pagination({
       <Link
         href={buildHref(Math.min(totalPages, page + 1))}
         aria-disabled={page === totalPages}
+        aria-label="Next page"
         className={clsx(
           "flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-primary-dark hover:border-accent-gold",
           page === totalPages && "pointer-events-none opacity-40",

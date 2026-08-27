@@ -15,7 +15,7 @@ export function ShopByCategory({
         <h2 className="font-heading text-2xl text-text-primary-dark sm:text-3xl">
           Shop By Category
         </h2>
-        <Link href="/gems" className="text-sm text-accent-gold hover:underline">
+        <Link href="/gems" className="text-sm text-accent-gold-text underline">
           View all categories →
         </Link>
       </div>

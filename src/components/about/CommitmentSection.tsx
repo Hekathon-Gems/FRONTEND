@@ -7,7 +7,7 @@ export function CommitmentSection({ block }: { block: AboutCommitmentBlock }) {
     <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-24">
       <div className="grid items-center gap-10 lg:grid-cols-2">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold-text">
             {block.eyebrow}
           </p>
           <h2 className="mt-3 font-heading text-3xl text-text-primary-dark">

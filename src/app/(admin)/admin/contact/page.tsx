@@ -46,6 +46,7 @@ export default function AdminContactPage() {
           </p>
         </div>
         <select
+          aria-label="Filter by status"
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
           className="h-10 rounded-sm border border-border bg-bg-white px-3 text-sm focus:border-accent-gold focus:outline-none"

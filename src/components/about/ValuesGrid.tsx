@@ -12,7 +12,7 @@ export function ValuesGrid({ block }: { block: AboutValuesBlock }) {
   return (
     <section className="bg-bg-cream">
       <div className="mx-auto max-w-[1280px] px-4 py-16 text-center sm:px-6 sm:py-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold-text">
           {block.eyebrow}
         </p>
         <h2 className="mt-3 font-heading text-3xl text-text-primary-dark">

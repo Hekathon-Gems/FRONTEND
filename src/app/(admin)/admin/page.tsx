@@ -140,7 +140,7 @@ export default function AdminDashboardPage() {
                   <td className="px-4 py-3">
                     <Link
                       href={`/admin/orders/${order.id}`}
-                      className="font-medium text-accent-gold hover:underline"
+                      className="font-medium text-accent-gold-text underline"
                     >
                       {order.orderNumber}
                     </Link>
