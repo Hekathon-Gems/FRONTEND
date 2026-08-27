@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { RefreshCw } from "lucide-react";
 import {
   getAdminContactSubmissions,
   updateContactSubmissionStatus,
 } from "@/lib/admin-client";
 import { formatDate } from "@/lib/format";
 import type { AdminContactSubmission } from "@/lib/admin-types";
+
+const POLL_INTERVAL_MS = 20_000;
 
 const STATUS_CLASSES: Record<string, string> = {
   new: "bg-warning-bg text-warning",
@@ -22,12 +25,26 @@ export default function AdminContactPage() {
   >(null);
   const [statusFilter, setStatusFilter] = useState("");
   const [openId, setOpenId] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   function load() {
-    getAdminContactSubmissions(statusFilter || undefined).then(setSubmissions);
+    return getAdminContactSubmissions(statusFilter || undefined).then(
+      setSubmissions,
+    );
   }
 
-  useEffect(load, [statusFilter]);
+  async function handleRefresh() {
+    setRefreshing(true);
+    await load();
+    setRefreshing(false);
+  }
+
+  useEffect(() => {
+    load();
+    const interval = setInterval(load, POLL_INTERVAL_MS);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statusFilter]);
 
   async function handleStatusChange(id: string, status: string) {
     await updateContactSubmissionStatus(id, status);
@@ -45,19 +62,34 @@ export default function AdminContactPage() {
             Messages sent through the contact form.
           </p>
         </div>
-        <select
-          aria-label="Filter by status"
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="h-10 rounded-sm border border-border bg-bg-white px-3 text-sm focus:border-accent-gold focus:outline-none"
-        >
-          <option value="">All statuses</option>
-          {STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {s.replace("_", " ")}
-            </option>
-          ))}
-        </select>
+        <div className="flex items-center gap-2">
+          <select
+            aria-label="Filter by status"
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="h-10 rounded-sm border border-border bg-bg-white px-3 text-sm focus:border-accent-gold focus:outline-none"
+          >
+            <option value="">All statuses</option>
+            {STATUSES.map((s) => (
+              <option key={s} value={s}>
+                {s.replace("_", " ")}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={handleRefresh}
+            aria-label="Refresh submissions"
+            title="Refresh"
+            className="flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-bg-white text-text-muted hover:border-accent-gold hover:text-accent-gold disabled:cursor-not-allowed disabled:opacity-40"
+            disabled={refreshing}
+          >
+            <RefreshCw
+              className={`h-4 w-4 ${refreshing ? "animate-spin" : ""}`}
+              strokeWidth={2}
+            />
+          </button>
+        </div>
       </div>
 
       <div className="mt-6 space-y-3">
