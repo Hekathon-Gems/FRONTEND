@@ -67,16 +67,27 @@ export function ContactForm() {
         </p>
       )}
 
-      <input
-        type="text"
-        name="website"
-        value={website}
-        onChange={(e) => setWebsite(e.target.value)}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        className="absolute -left-[9999px] h-0 w-0 opacity-0"
-      />
+      {/*
+        Honeypot: real users never see or fill this. Previously it was
+        positioned off-screen (absolute + 0 size) with name="website" —
+        Chrome's autofill and some password managers still populate
+        off-screen-but-rendered fields, and "website" is a name they
+        recognize, which silently dropped real submissions (the backend
+        treats any non-empty value here as a bot and no-ops). display:none
+        is reliably skipped by autofill, and an obscure field name/id keeps
+        it from matching any saved-value heuristics.
+      */}
+      <div style={{ display: "none" }} aria-hidden="true">
+        <input
+          type="text"
+          name="hp_contact_note"
+          id="hp_contact_note"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
 
       <label className="flex flex-col gap-1.5">
         <span className={LABEL_CLASSES}>Your Name</span>
