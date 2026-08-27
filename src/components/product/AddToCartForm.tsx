@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { AnimatedMessage } from "@/components/motion/AnimatedMessage";
 import { addToCart, cartItemCount } from "@/lib/cart-client";
 import { useCartStore } from "@/store/cart-store";
 import { trackAddToCart } from "@/lib/analytics";
@@ -102,17 +103,21 @@ export function AddToCartForm({ product }: { product: Product }) {
         </Button>
       </div>
 
-      {status === "success" && (
-        <p className="mt-3 text-sm text-success">
-          Added to your bag.{" "}
-          <Link href="/cart" className="font-medium underline">
-            View Cart →
-          </Link>
-        </p>
-      )}
-      {status === "error" && errorMessage && (
-        <p className="mt-3 text-sm text-danger">{errorMessage}</p>
-      )}
+      <AnimatedMessage
+        show={status === "success"}
+        className="mt-3 text-sm text-success"
+      >
+        Added to your bag.{" "}
+        <Link href="/cart" className="font-medium underline">
+          View Cart →
+        </Link>
+      </AnimatedMessage>
+      <AnimatedMessage
+        show={status === "error" && !!errorMessage}
+        className="mt-3 text-sm text-danger"
+      >
+        {errorMessage}
+      </AnimatedMessage>
     </div>
   );
 }

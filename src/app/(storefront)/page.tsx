@@ -8,6 +8,7 @@ import { BlogPreview } from "@/components/home/BlogPreview";
 import { HeritageBanner } from "@/components/home/HeritageBanner";
 import { InstagramStrip } from "@/components/home/InstagramStrip";
 import { TrustBar } from "@/components/layout/TrustBar";
+import { FadeIn } from "@/components/motion/FadeIn";
 import { getCategories, getProducts, getBlogPosts } from "@/lib/api";
 
 export default async function HomePage() {
@@ -20,15 +21,33 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      <ShopByCategory categories={categories} />
-      <PopularGemstones products={popularProducts?.data ?? []} />
-      <BirthstoneCollection />
-      <CustomGemsCta />
-      <PromoBanners />
-      <BlogPreview posts={blogPosts?.data ?? []} />
-      <HeritageBanner />
-      <InstagramStrip />
-      <TrustBar />
+      <FadeIn>
+        <ShopByCategory categories={categories} />
+      </FadeIn>
+      <FadeIn>
+        <PopularGemstones products={popularProducts?.data ?? []} />
+      </FadeIn>
+      <FadeIn>
+        <BirthstoneCollection />
+      </FadeIn>
+      <FadeIn>
+        <CustomGemsCta />
+      </FadeIn>
+      <FadeIn>
+        <PromoBanners />
+      </FadeIn>
+      <FadeIn>
+        <BlogPreview posts={blogPosts?.data ?? []} />
+      </FadeIn>
+      <FadeIn>
+        <HeritageBanner />
+      </FadeIn>
+      <FadeIn>
+        <InstagramStrip />
+      </FadeIn>
+      <FadeIn>
+        <TrustBar />
+      </FadeIn>
     </>
   );
 }

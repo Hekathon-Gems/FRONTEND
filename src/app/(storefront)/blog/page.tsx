@@ -5,6 +5,7 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { CategoryChips } from "@/components/blog/CategoryChips";
 import { BlogSearchForm } from "@/components/blog/BlogSearchForm";
 import { Pagination } from "@/components/catalog/Pagination";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 export const metadata: Metadata = {
   title: "Blog | Gemora Fine Gems",
@@ -73,11 +74,13 @@ export default async function BlogPage({ searchParams }: PageProps<"/blog">) {
           </div>
         ) : (
           <>
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <StaggerGrid className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {posts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
+                <StaggerItem key={post.slug}>
+                  <BlogCard post={post} />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGrid>
             <Pagination
               page={meta.page}
               totalPages={meta.totalPages}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { StatusPill } from "@/components/account/StatusPill";
+import { StaggerTableBody, StaggerRow } from "@/components/motion/StaggerTable";
 import { getAdminOrders } from "@/lib/admin-client";
 import { formatDate, formatPrice } from "@/lib/format";
 import type { AdminOrderListResponse } from "@/lib/admin-types";
@@ -88,9 +89,9 @@ export default function AdminOrdersPage() {
               <th className="px-4 py-3 font-medium">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <StaggerTableBody key={result?.data.map((o) => o.id).join(",")}>
             {(result?.data ?? []).map((order) => (
-              <tr
+              <StaggerRow
                 key={order.id}
                 className="border-b border-border last:border-b-0"
               >
@@ -121,7 +122,7 @@ export default function AdminOrdersPage() {
                     View
                   </Link>
                 </td>
-              </tr>
+              </StaggerRow>
             ))}
             {result && result.data.length === 0 && (
               <tr>
@@ -133,7 +134,7 @@ export default function AdminOrdersPage() {
                 </td>
               </tr>
             )}
-          </tbody>
+          </StaggerTableBody>
         </table>
       </div>
 

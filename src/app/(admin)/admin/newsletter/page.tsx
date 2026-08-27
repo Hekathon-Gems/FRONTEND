@@ -87,7 +87,7 @@ export default function AdminNewsletterPage() {
                 </td>
                 <td className="px-4 py-3">
                   {sub.unsubscribedAt ? (
-                    <span className="rounded-full bg-border px-2.5 py-1 text-xs text-text-muted">
+                    <span className="rounded-full bg-border px-2.5 py-1 text-xs text-text-primary-dark">
                       Unsubscribed
                     </span>
                   ) : sub.confirmedAt ? (

@@ -12,6 +12,7 @@ import {
   getAdminGemTypes,
 } from "@/lib/admin-client";
 import { formatPrice } from "@/lib/format";
+import { StaggerTableBody, StaggerRow } from "@/components/motion/StaggerTable";
 import type {
   AdminProductListResponse,
   AdminCategory,
@@ -185,9 +186,9 @@ export default function AdminProductsPage() {
               <th className="px-4 py-3 font-medium">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <StaggerTableBody key={result?.data.map((p) => p.id).join(",")}>
             {(result?.data ?? []).map((product) => (
-              <tr
+              <StaggerRow
                 key={product.id}
                 className="border-b border-border last:border-b-0"
               >
@@ -240,7 +241,7 @@ export default function AdminProductsPage() {
                     className={
                       product.isActive
                         ? "rounded-full bg-success-bg px-2.5 py-1 text-xs text-success"
-                        : "rounded-full bg-border px-2.5 py-1 text-xs text-text-muted"
+                        : "rounded-full bg-border px-2.5 py-1 text-xs text-text-primary-dark"
                     }
                   >
                     {product.isActive ? "Active" : "Inactive"}
@@ -254,7 +255,7 @@ export default function AdminProductsPage() {
                     Edit
                   </Link>
                 </td>
-              </tr>
+              </StaggerRow>
             ))}
             {result && result.data.length === 0 && (
               <tr>
@@ -266,7 +267,7 @@ export default function AdminProductsPage() {
                 </td>
               </tr>
             )}
-          </tbody>
+          </StaggerTableBody>
         </table>
       </div>
 

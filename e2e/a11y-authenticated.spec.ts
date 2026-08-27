@@ -10,6 +10,9 @@ async function signIn(page: Page, email: string, password: string) {
 }
 
 async function scan(page: Page) {
+  // Let entrance/stagger animations settle before scanning — see
+  // a11y.spec.ts for why.
+  await page.waitForTimeout(1500);
   const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .analyze();

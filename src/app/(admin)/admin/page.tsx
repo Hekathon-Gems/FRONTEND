@@ -11,6 +11,8 @@ import {
   Inbox,
 } from "lucide-react";
 import { StatusPill } from "@/components/account/StatusPill";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import { StaggerTableBody, StaggerRow } from "@/components/motion/StaggerTable";
 import { getDashboardKpis } from "@/lib/admin-client";
 import { getAdminContactSubmissions } from "@/lib/admin-client";
 import { formatDate, formatPrice } from "@/lib/format";
@@ -39,8 +41,8 @@ export default function AdminDashboardPage() {
       {!kpis ? (
         <div className="mt-6 h-40 animate-pulse rounded-md bg-border" />
       ) : (
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-md border border-border bg-bg-white p-5">
+        <StaggerGrid className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StaggerItem className="rounded-md border border-border bg-bg-white p-5">
             <div className="flex items-center gap-2 text-text-muted">
               <ShoppingCart className="h-4 w-4" strokeWidth={1.5} />
               <span className="text-xs uppercase tracking-[0.05em]">
@@ -50,8 +52,8 @@ export default function AdminDashboardPage() {
             <p className="mt-2 font-heading text-2xl text-text-primary-dark">
               {kpis.todayOrderCount}
             </p>
-          </div>
-          <div className="rounded-md border border-border bg-bg-white p-5">
+          </StaggerItem>
+          <StaggerItem className="rounded-md border border-border bg-bg-white p-5">
             <div className="flex items-center gap-2 text-text-muted">
               <DollarSign className="h-4 w-4" strokeWidth={1.5} />
               <span className="text-xs uppercase tracking-[0.05em]">
@@ -61,8 +63,8 @@ export default function AdminDashboardPage() {
             <p className="mt-2 font-heading text-2xl text-text-primary-dark">
               {formatPrice(kpis.todayRevenueCents)}
             </p>
-          </div>
-          <div className="rounded-md border border-border bg-bg-white p-5">
+          </StaggerItem>
+          <StaggerItem className="rounded-md border border-border bg-bg-white p-5">
             <div className="flex items-center gap-2 text-text-muted">
               <Clock className="h-4 w-4" strokeWidth={1.5} />
               <span className="text-xs uppercase tracking-[0.05em]">
@@ -72,8 +74,8 @@ export default function AdminDashboardPage() {
             <p className="mt-2 font-heading text-2xl text-text-primary-dark">
               {kpis.pendingOrdersCount}
             </p>
-          </div>
-          <div className="rounded-md border border-border bg-bg-white p-5">
+          </StaggerItem>
+          <StaggerItem className="rounded-md border border-border bg-bg-white p-5">
             <div className="flex items-center gap-2 text-text-muted">
               <AlertTriangle className="h-4 w-4" strokeWidth={1.5} />
               <span className="text-xs uppercase tracking-[0.05em]">
@@ -83,8 +85,8 @@ export default function AdminDashboardPage() {
             <p className="mt-2 font-heading text-2xl text-text-primary-dark">
               {kpis.lowStockCount}
             </p>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerGrid>
       )}
 
       <div className="mt-8 flex flex-wrap gap-3">
@@ -131,9 +133,9 @@ export default function AdminDashboardPage() {
                 <th className="px-4 py-3 font-medium">Status</th>
               </tr>
             </thead>
-            <tbody>
+            <StaggerTableBody>
               {(kpis?.recentOrders ?? []).map((order) => (
-                <tr
+                <StaggerRow
                   key={order.id}
                   className="border-b border-border last:border-b-0"
                 >
@@ -157,7 +159,7 @@ export default function AdminDashboardPage() {
                   <td className="px-4 py-3">
                     <StatusPill status={order.status} />
                   </td>
-                </tr>
+                </StaggerRow>
               ))}
               {kpis && kpis.recentOrders.length === 0 && (
                 <tr>
@@ -169,7 +171,7 @@ export default function AdminDashboardPage() {
                   </td>
                 </tr>
               )}
-            </tbody>
+            </StaggerTableBody>
           </table>
         </div>
       </div>

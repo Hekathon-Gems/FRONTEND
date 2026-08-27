@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
+import { motion } from "motion/react";
 import {
   LayoutDashboard,
   Gem,
@@ -105,14 +106,21 @@ export function AdminSidebarNav({ role }: { role: string }) {
                 key={item.href}
                 href={item.href}
                 className={clsx(
-                  "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors",
+                  "relative flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors",
                   isActive
-                    ? "bg-accent-gold text-bg-dark"
+                    ? "text-bg-dark"
                     : "text-text-muted-light hover:bg-white/5 hover:text-text-primary-light",
                 )}
               >
-                <Icon className="h-4 w-4" strokeWidth={1.5} />
-                {item.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="admin-active-pill"
+                    className="absolute inset-0 rounded-md bg-accent-gold"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <Icon className="relative z-10 h-4 w-4" strokeWidth={1.5} />
+                <span className="relative z-10">{item.label}</span>
               </Link>
             );
           },

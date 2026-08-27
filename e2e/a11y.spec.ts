@@ -20,6 +20,10 @@ for (const [path, label] of PUBLIC_PAGES) {
     page,
   }) => {
     await page.goto(path);
+    // Let entrance/scroll-reveal animations settle before scanning — axe
+    // evaluates the DOM at the instant it runs, and a card mid-fade-in
+    // (opacity: 0) reads as a false-positive contrast violation.
+    await page.waitForTimeout(1500);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
       .analyze();

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { MotionConfig } from "motion/react";
 import { initAuth } from "@/lib/auth-client";
 import { useAuthStore } from "@/store/auth-store";
 import { AdminSidebarNav } from "@/components/admin/AdminSidebarNav";
@@ -46,11 +47,13 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-bg-cream">
-      <div className="mx-auto flex max-w-[1600px]">
-        <AdminSidebarNav role={user.role} />
-        <div className="min-w-0 flex-1 px-6 py-8 sm:px-10">{children}</div>
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-bg-cream">
+        <div className="mx-auto flex max-w-[1600px]">
+          <AdminSidebarNav role={user.role} />
+          <div className="min-w-0 flex-1 px-6 py-8 sm:px-10">{children}</div>
+        </div>
       </div>
-    </div>
+    </MotionConfig>
   );
 }

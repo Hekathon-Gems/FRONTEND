@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import { ShoppingBag, Check, Heart } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
@@ -58,10 +59,14 @@ export function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="group relative">
+    <motion.div
+      className="group relative"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+    >
       <Link
         href={`/gems/${product.slug}`}
-        className="block overflow-hidden rounded-md bg-bg-white shadow-card"
+        className="block overflow-hidden rounded-md bg-bg-white shadow-card transition-shadow duration-200 group-hover:shadow-elevated"
       >
         <div className="relative aspect-square overflow-hidden bg-bg-dark">
           {image ? (
@@ -89,14 +94,22 @@ export function ProductCard({ product }: { product: Product }) {
             onClick={handleWishlist}
             className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-bg-white/90 text-text-primary-dark opacity-0 transition-opacity group-hover:opacity-100"
           >
-            <Heart
-              className={
-                wishlistStatus === "added"
-                  ? "h-4 w-4 fill-current text-danger"
-                  : "h-4 w-4"
-              }
-              strokeWidth={1.5}
-            />
+            <motion.span
+              key={wishlistStatus}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 500, damping: 15 }}
+              className="inline-flex"
+            >
+              <Heart
+                className={
+                  wishlistStatus === "added"
+                    ? "h-4 w-4 fill-current text-danger"
+                    : "h-4 w-4"
+                }
+                strokeWidth={1.5}
+              />
+            </motion.span>
           </button>
           {!isSoldOut && (
             <button
@@ -106,11 +119,19 @@ export function ProductCard({ product }: { product: Product }) {
               onClick={handleQuickAdd}
               className="absolute bottom-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-bg-white/90 text-text-primary-dark opacity-0 transition-opacity group-hover:opacity-100"
             >
-              {cartStatus === "added" ? (
-                <Check className="h-4 w-4 text-success" strokeWidth={1.5} />
-              ) : (
-                <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
-              )}
+              <motion.span
+                key={cartStatus}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                className="inline-flex"
+              >
+                {cartStatus === "added" ? (
+                  <Check className="h-4 w-4 text-success" strokeWidth={1.5} />
+                ) : (
+                  <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
+                )}
+              </motion.span>
             </button>
           )}
         </div>
@@ -129,6 +150,6 @@ export function ProductCard({ product }: { product: Product }) {
           </p>
         </div>
       </Link>
-    </div>
+    </motion.div>
   );
 }

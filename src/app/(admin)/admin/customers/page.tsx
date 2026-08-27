@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getAdminCustomers } from "@/lib/admin-client";
 import { formatDate, formatPrice } from "@/lib/format";
+import { StaggerTableBody, StaggerRow } from "@/components/motion/StaggerTable";
 import type { AdminCustomerListResponse } from "@/lib/admin-types";
 
 export default function AdminCustomersPage() {
@@ -56,9 +57,9 @@ export default function AdminCustomersPage() {
               <th className="px-4 py-3 font-medium">Status</th>
             </tr>
           </thead>
-          <tbody>
+          <StaggerTableBody key={result?.data.map((c) => c.id).join(",")}>
             {(result?.data ?? []).map((customer) => (
-              <tr
+              <StaggerRow
                 key={customer.id}
                 className="border-b border-border last:border-b-0"
               >
@@ -94,7 +95,7 @@ export default function AdminCustomersPage() {
                     </span>
                   )}
                 </td>
-              </tr>
+              </StaggerRow>
             ))}
             {result && result.data.length === 0 && (
               <tr>
@@ -106,7 +107,7 @@ export default function AdminCustomersPage() {
                 </td>
               </tr>
             )}
-          </tbody>
+          </StaggerTableBody>
         </table>
       </div>
 

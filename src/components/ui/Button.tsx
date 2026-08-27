@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import clsx from "clsx";
+import { motion } from "motion/react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 type Variant = "primary" | "accent" | "outline" | "outline-light" | "ghost";
@@ -23,19 +26,28 @@ interface CommonProps {
   children: ReactNode;
 }
 
+const MotionLink = motion.create(Link);
+
+type NativeButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "onAnimationStart" | "onAnimationEnd" | "onDrag" | "onDragStart" | "onDragEnd"
+>;
+
 export function Button({
   variant = "primary",
   className,
   children,
   ...props
-}: CommonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+}: CommonProps & NativeButtonProps) {
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.12 }}
       className={clsx(BASE_CLASSES, VARIANT_CLASSES[variant], className)}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }
 
@@ -46,11 +58,13 @@ export function LinkButton({
   href,
 }: CommonProps & { href: string }) {
   return (
-    <Link
+    <MotionLink
       href={href}
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.12 }}
       className={clsx(BASE_CLASSES, VARIANT_CLASSES[variant], className)}
     >
       {children}
-    </Link>
+    </MotionLink>
   );
 }

@@ -9,6 +9,7 @@ import type { Product } from "@/lib/types";
 import { ProductCard } from "@/components/product/ProductCard";
 import { formatPrice } from "@/lib/format";
 import { Button } from "@/components/ui/Button";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 export function ProductGrid({ products }: { products: Product[] }) {
   const [view, setView] = useState<"grid" | "list">("grid");
@@ -63,11 +64,16 @@ export function ProductGrid({ products }: { products: Product[] }) {
       </div>
 
       {view === "grid" ? (
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+        <StaggerGrid
+          key={products.map((p) => p.id).join(",")}
+          className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+        >
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <StaggerItem key={product.id}>
+              <ProductCard product={product} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       ) : (
         <div className="flex flex-col gap-4">
           {products.map((product) => {

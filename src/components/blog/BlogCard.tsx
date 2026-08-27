@@ -1,14 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "motion/react";
 import { BookOpen } from "lucide-react";
 import { formatDate } from "@/lib/format";
 import type { BlogPost } from "@/lib/types";
 
+const MotionLink = motion.create(Link);
+
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <Link
+    <MotionLink
       href={`/blog/${post.slug}`}
-      className="block overflow-hidden rounded-md bg-bg-white shadow-card"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="block overflow-hidden rounded-md bg-bg-white shadow-card transition-shadow duration-200 hover:shadow-elevated"
     >
       <div className="relative aspect-[16/10] bg-bg-dark">
         {post.featuredImageUrl ? (
@@ -47,6 +54,6 @@ export function BlogCard({ post }: { post: BlogPost }) {
           Read More →
         </span>
       </div>
-    </Link>
+    </MotionLink>
   );
 }

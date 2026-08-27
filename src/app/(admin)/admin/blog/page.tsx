@@ -21,7 +21,7 @@ import type { AdminBlogPost, AdminBlogCategory } from "@/lib/admin-types";
 const STATUS_CLASSES: Record<string, string> = {
   draft: "bg-warning-bg text-warning",
   published: "bg-success-bg text-success",
-  archived: "bg-border text-text-muted",
+  archived: "bg-border text-text-primary-dark",
 };
 
 export default function AdminBlogPage() {
