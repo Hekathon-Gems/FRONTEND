@@ -5,7 +5,8 @@ import clsx from "clsx";
 import { motion } from "motion/react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "accent" | "outline" | "outline-light" | "ghost";
+type Variant =
+  "primary" | "accent" | "outline" | "outline-light" | "outline-gold" | "ghost";
 
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary: "bg-bg-dark text-text-primary-light hover:bg-black",
@@ -14,6 +15,8 @@ const VARIANT_CLASSES: Record<Variant, string> = {
     "bg-transparent text-bg-dark border border-accent-gold hover:bg-accent-gold/10",
   "outline-light":
     "bg-transparent text-text-primary-light border border-white hover:bg-white/10",
+  "outline-gold":
+    "bg-transparent text-accent-gold border border-accent-gold hover:bg-accent-gold/10",
   ghost: "bg-transparent text-accent-gold-text underline px-0",
 };
 

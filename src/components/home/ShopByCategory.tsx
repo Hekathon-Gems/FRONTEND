@@ -24,13 +24,17 @@ export function ShopByCategory({
           <Link
             key={cat.slug}
             href={`/gems?category=${cat.slug}`}
-            className="group flex flex-col items-center rounded-md bg-bg-dark px-4 py-10 text-center transition-transform hover:-translate-y-0.5"
+            className="group flex flex-col items-center rounded-md bg-bg-cream px-4 py-8 text-center shadow-card transition-shadow hover:shadow-elevated"
           >
-            <Gem className="h-8 w-8 text-accent-gold" strokeWidth={1.25} />
-            <p className="mt-4 font-heading text-sm text-text-primary-light">
+            {/* No category photography exists in this project — a
+                decorative circle stands in for a real product photo. */}
+            <span className="flex h-20 w-20 items-center justify-center rounded-full bg-bg-white text-accent-gold shadow-card">
+              <Gem className="h-8 w-8" strokeWidth={1.25} />
+            </span>
+            <p className="mt-4 font-heading text-sm text-text-primary-dark">
               {cat.name}
             </p>
-            <span className="mt-2 text-xs text-accent-gold opacity-0 transition-opacity group-hover:opacity-100">
+            <span className="mt-1.5 text-xs text-accent-gold-text underline">
               Explore Now →
             </span>
           </Link>

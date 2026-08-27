@@ -9,7 +9,7 @@ const ITEMS = [
 
 export function TrustBar() {
   return (
-    <div className="border-y border-border-dark bg-bg-dark-alt">
+    <div className="border-y border-border bg-bg-cream">
       <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-6 px-4 py-8 sm:px-6 lg:grid-cols-4">
         {ITEMS.map(({ icon: Icon, label, sub }) => (
           <div key={label} className="flex items-center gap-3">
@@ -18,10 +18,10 @@ export function TrustBar() {
               strokeWidth={1.5}
             />
             <div>
-              <p className="text-sm font-medium text-text-primary-light">
+              <p className="text-sm font-medium text-text-primary-dark">
                 {label}
               </p>
-              <p className="text-xs text-text-muted-light">{sub}</p>
+              <p className="text-xs text-text-muted">{sub}</p>
             </div>
           </div>
         ))}
