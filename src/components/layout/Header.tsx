@@ -7,7 +7,6 @@ const NAV_LINKS = [
   { label: "Gems", href: "/gems" },
   { label: "Collections", href: "/collections" },
   { label: "About Us", href: "/about" },
-  { label: "Education", href: "/education" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];

@@ -21,9 +21,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       heading: "Information",
       links: [
         { label: "About Us", href: "/about" },
-        { label: "Education", href: "/education" },
         { label: "Blog", href: "/blog" },
-        { label: "Care Guide", href: "/education/care-guide" },
         { label: "Contact Us", href: "/contact" },
       ],
     },
