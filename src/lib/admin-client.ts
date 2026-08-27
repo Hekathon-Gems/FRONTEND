@@ -21,6 +21,7 @@ import type {
   BlogPostInput,
   CouponInput,
   DashboardKpis,
+  ManualOrderInput,
   ProductInput,
 } from "./admin-types";
 import type { PublicUser } from "./types";
@@ -252,6 +253,15 @@ export function getAdminOrders(params: {
 
 export function getAdminOrder(id: string): Promise<AdminOrderDetail> {
   return apiRequest(`/admin/orders/${id}`);
+}
+
+export function createManualOrder(
+  input: ManualOrderInput,
+): Promise<AdminOrderDetail> {
+  return apiRequest("/admin/orders", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
 }
 
 export function updateOrderStatus(

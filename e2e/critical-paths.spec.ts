@@ -15,6 +15,29 @@ function setLatestOrderStatus(status: string) {
   );
 }
 
+// Manual order creation, tested below, really decrements stock — restore
+// it and remove every row the order touched so re-running this suite
+// doesn't leave the catalog permanently short a stone.
+function cleanUpManualOrder(orderId: string) {
+  const env = { ...process.env, PGPASSWORD: "Enoch" };
+  const run = (sql: string) =>
+    execSync(`psql -h localhost -U postgres -d gemora -t -c "${sql}"`, {
+      encoding: "utf8",
+      env,
+    });
+  run(
+    `UPDATE products p SET stock_quantity = p.stock_quantity + oi.quantity, ` +
+      `stock_status = CASE WHEN p.stock_quantity + oi.quantity > 0 THEN 'in_stock' ELSE p.stock_status END ` +
+      `FROM order_items oi WHERE oi.order_id = '${orderId}' AND oi.product_id = p.id;`,
+  );
+  run(`DELETE FROM order_status_history WHERE order_id = '${orderId}';`);
+  run(`DELETE FROM order_items WHERE order_id = '${orderId}';`);
+  run(
+    `DELETE FROM admin_audit_log WHERE entity_type = 'order' AND entity_id = '${orderId}';`,
+  );
+  run(`DELETE FROM orders WHERE id = '${orderId}';`);
+}
+
 async function signIn(page: Page, email: string, password: string) {
   await page.goto("/sign-in");
   await page.getByLabel("Email Address").fill(email);
@@ -78,6 +101,56 @@ test.describe("Browse → PDP → cart → checkout → confirmation", () => {
     await expect(
       page.getByRole("button", { name: /Continue to Payment/i }),
     ).toBeEnabled();
+  });
+});
+
+test.describe("Admin manual order creation", () => {
+  test("an admin can record a phone/in-person order through the UI", async ({
+    page,
+  }) => {
+    await signIn(page, "admin@gemora.com", "Password123!");
+
+    await page.goto("/admin/orders");
+    await page.getByRole("link", { name: "New Order" }).click();
+    await page.waitForURL(/\/admin\/orders\/new/);
+
+    await page.getByRole("button", { name: "Guest" }).click();
+    await page
+      .getByLabel("Guest Email*")
+      .fill(`e2e-manual-order-${Date.now()}@example.com`);
+
+    await page
+      .getByPlaceholder("Search products by name or SKU to add...")
+      .fill("Aquamarine");
+    await expect(page.getByText(/Aquamarine/i).first()).toBeVisible();
+    await page
+      .getByText(/Aquamarine/i)
+      .first()
+      .click();
+
+    await page.getByLabel("Full Name*").fill("UI Test Customer");
+    await page.getByLabel("Phone Number*").fill("555-0199");
+    await page.getByLabel("Address*").fill("42 Test Ave");
+    await page.getByLabel("City*").fill("Testville");
+    await page.getByLabel("State*").fill("NY");
+    await page.getByLabel("ZIP Code*").fill("10002");
+
+    await page.getByRole("button", { name: "Create Order" }).click();
+    await page.waitForURL(/\/admin\/orders\/[0-9a-f-]+$/, { timeout: 10_000 });
+
+    await expect(page.getByText("Processing").first()).toBeVisible();
+    await expect(page.getByText(/Aquamarine/i).first()).toBeVisible();
+
+    const orderId = page.url().split("/").pop()!;
+    cleanUpManualOrder(orderId);
+  });
+
+  test("staff cannot see the New Order link", async ({ page }) => {
+    await signIn(page, "staff@gemora.com", "Password123!");
+    await page.goto("/admin/orders");
+    await expect(
+      page.getByRole("link", { name: "New Order" }),
+    ).not.toBeVisible();
   });
 });
 

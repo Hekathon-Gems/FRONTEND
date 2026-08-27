@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Plus } from "lucide-react";
 import { StatusPill } from "@/components/account/StatusPill";
 import { StaggerTableBody, StaggerRow } from "@/components/motion/StaggerTable";
 import { getAdminOrders } from "@/lib/admin-client";
 import { formatDate, formatPrice } from "@/lib/format";
+import { useAuthStore } from "@/store/auth-store";
 import type { AdminOrderListResponse } from "@/lib/admin-types";
 import type { OrderStatus } from "@/lib/types";
 
@@ -20,6 +22,7 @@ const STATUSES: { label: string; value: OrderStatus | "" }[] = [
 ];
 
 export default function AdminOrdersPage() {
+  const role = useAuthStore((state) => state.user?.role);
   const [result, setResult] = useState<AdminOrderListResponse | null>(null);
   const [status, setStatus] = useState<OrderStatus | "">("");
   const [q, setQ] = useState("");
@@ -45,10 +48,25 @@ export default function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="font-heading text-2xl text-text-primary-dark">Orders</h1>
-      <p className="mt-1 text-sm text-text-muted">
-        View and manage customer orders.
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h1 className="font-heading text-2xl text-text-primary-dark">
+            Orders
+          </h1>
+          <p className="mt-1 text-sm text-text-muted">
+            View and manage customer orders.
+          </p>
+        </div>
+        {role === "admin" && (
+          <Link
+            href="/admin/orders/new"
+            className="inline-flex items-center gap-2 rounded-md bg-bg-dark px-4 py-2.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-text-primary-light hover:bg-black"
+          >
+            <Plus className="h-4 w-4" strokeWidth={1.5} />
+            New Order
+          </Link>
+        )}
+      </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
         <input

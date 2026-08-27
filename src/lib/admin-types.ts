@@ -133,6 +133,22 @@ export interface AdminOrderListResponse {
   meta: PagedMeta;
 }
 
+export interface ManualOrderInput {
+  userId?: string;
+  guestEmail?: string;
+  items: { productId: string; quantity: number }[];
+  fullName: string;
+  phone: string;
+  addressLine1: string;
+  addressLine2?: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  note?: string;
+  sendConfirmationEmail?: boolean;
+}
+
 export interface AdminOrderDetail {
   id: string;
   orderNumber: string;
