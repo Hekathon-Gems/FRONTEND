@@ -86,7 +86,7 @@ export function AdminSidebarNav({ role }: { role: string }) {
           href="/admin"
           className="font-heading text-base tracking-[0.1em] text-text-primary-light"
         >
-          GEMORA <span className="text-accent-gold">ADMIN</span>
+          HEKATHON <span className="text-accent-gold">ADMIN</span>
         </Link>
         <p className="mt-1 text-xs uppercase tracking-[0.05em] text-text-muted-light">
           {role}

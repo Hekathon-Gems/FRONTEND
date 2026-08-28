@@ -10,7 +10,7 @@ export function MapEmbed() {
       <div className="relative aspect-[16/9] bg-bg-cream">
         {MAPS_API_KEY ? (
           <iframe
-            title="Gemora Fine Gems showroom map"
+            title="Hekathon Gems showroom map"
             src={`https://www.google.com/maps/embed/v1/place?key=${MAPS_API_KEY}&q=${encodeURIComponent(SHOWROOM_ADDRESS)}`}
             className="h-full w-full border-0"
             loading="lazy"

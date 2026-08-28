@@ -23,10 +23,10 @@ export function InstagramStrip() {
           <Camera className="h-4 w-4 text-accent-gold" strokeWidth={1.5} />
           Follow us on Instagram{" "}
           <a
-            href="https://instagram.com/gemora_gems"
+            href="https://instagram.com/hekathongems"
             className="text-accent-gold underline"
           >
-            @gemora_gems
+            @hekathongems
           </a>
         </p>
       </div>

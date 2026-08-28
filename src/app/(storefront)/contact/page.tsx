@@ -16,9 +16,9 @@ import { MapEmbed } from "@/components/contact/MapEmbed";
 import { NewsletterForm } from "@/components/layout/NewsletterForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Gemora Fine Gems",
+  title: "Contact Us | Hekathon Gems",
   description:
-    "Have a question, need expert advice, or looking for something truly unique? Get in touch with the Gemora Fine Gems team.",
+    "Have a question, need expert advice, or looking for something truly unique? Get in touch with the Hekathon Gems team.",
 };
 
 const FEATURES = [
@@ -120,7 +120,9 @@ export default function ContactPage() {
                   <p className="text-sm font-medium text-text-primary-dark">
                     Email Us
                   </p>
-                  <p className="text-sm text-text-muted">hello@gemora.com</p>
+                  <p className="text-sm text-text-muted">
+                    hello@hekathongems.com
+                  </p>
                   <p className="text-xs text-text-muted">
                     We reply within 24 hours
                   </p>
@@ -147,7 +149,7 @@ export default function ContactPage() {
                 </p>
                 <div className="mt-2 flex gap-4 text-sm text-accent-gold-text">
                   <a
-                    href="https://instagram.com/gemora_gems"
+                    href="https://instagram.com/hekathongems"
                     className="underline"
                   >
                     Instagram

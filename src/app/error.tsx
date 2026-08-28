@@ -23,10 +23,10 @@ export default function ErrorBoundary({
       <p className="mt-3 text-sm text-text-muted">
         Please try again in a moment. If this keeps happening, contact us at{" "}
         <a
-          href="mailto:hello@gemora.com"
+          href="mailto:hello@hekathongems.com"
           className="text-accent-gold-text underline"
         >
-          hello@gemora.com
+          hello@hekathongems.com
         </a>
         .
       </p>

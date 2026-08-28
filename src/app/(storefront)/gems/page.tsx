@@ -35,7 +35,7 @@ const TRUST_STRIP = [
 ];
 
 export const metadata = {
-  title: "Gems | Gemora Fine Gems",
+  title: "Gems | Hekathon Gems",
   description:
     "Browse certified loose gemstones — handpicked, ethically sourced, and ready to ship.",
 };

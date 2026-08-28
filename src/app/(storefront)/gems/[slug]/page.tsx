@@ -72,9 +72,9 @@ export async function generateMetadata({
 }: PageProps<"/gems/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const product = await loadProduct(slug);
-  if (!product) return { title: "Gem Not Found | Gemora Fine Gems" };
+  if (!product) return { title: "Gem Not Found | Hekathon Gems" };
   return {
-    title: `${product.name} | Gemora Fine Gems`,
+    title: `${product.name} | Hekathon Gems`,
     description:
       product.shortDescription ?? product.longDescription ?? undefined,
     alternates: { canonical: absoluteUrl(`/gems/${product.slug}`) },
@@ -97,7 +97,7 @@ function buildProductJsonLd(product: Product) {
     description:
       product.shortDescription ?? product.longDescription ?? undefined,
     image: product.images.map((img) => img.url),
-    brand: { "@type": "Brand", name: "Gemora Fine Gems" },
+    brand: { "@type": "Brand", name: "Hekathon Gems" },
     category: product.category?.name ?? undefined,
     offers: {
       "@type": "Offer",

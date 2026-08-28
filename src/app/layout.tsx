@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gemora Fine Gems",
+  title: "Hekathon Gems",
   description:
     "Certified loose gemstones and fine jewelry, ethically sourced and curated for timeless beauty.",
 };

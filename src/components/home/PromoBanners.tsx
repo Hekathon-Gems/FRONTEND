@@ -47,8 +47,8 @@ export function PromoBanners() {
             Timeless Beauty. Trusted Since 1888.
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-text-muted-light sm:text-base">
-            For over 135 years, Gemora has been passionate about sourcing the
-            world&apos;s most exquisite gemstones and bringing their natural
+            For over 135 years, Hekathon Gems has been passionate about sourcing
+            the world&apos;s most exquisite gemstones and bringing their natural
             beauty to life.
           </p>
           <LinkButton href="/about" variant="outline-light" className="mt-8">

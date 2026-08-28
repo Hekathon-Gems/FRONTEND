@@ -33,9 +33,9 @@ export async function generateMetadata({
 }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const post = await loadPost(slug);
-  if (!post) return { title: "Article Not Found | Gemora Fine Gems" };
+  if (!post) return { title: "Article Not Found | Hekathon Gems" };
   return {
-    title: `${post.title} | Gemora Fine Gems`,
+    title: `${post.title} | Hekathon Gems`,
     description: post.excerpt ?? undefined,
     alternates: { canonical: absoluteUrl(`/blog/${post.slug}`) },
   };
@@ -54,10 +54,10 @@ function buildArticleJsonLd(post: BlogPost) {
           "@type": "Person",
           name: `${post.author.firstName} ${post.author.lastName}`,
         }
-      : { "@type": "Organization", name: "Gemora Fine Gems" },
+      : { "@type": "Organization", name: "Hekathon Gems" },
     publisher: {
       "@type": "Organization",
-      name: "Gemora Fine Gems",
+      name: "Hekathon Gems",
     },
     mainEntityOfPage: {
       "@type": "WebPage",

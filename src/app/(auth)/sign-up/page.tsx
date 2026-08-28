@@ -58,7 +58,7 @@ function SignUpForm() {
         Create Account
       </h1>
       <p className="mt-1 text-center text-sm text-text-muted">
-        Join Gemora Fine Gems
+        Join Hekathon Gems
       </p>
 
       {error && (

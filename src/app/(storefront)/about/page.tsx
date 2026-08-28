@@ -9,9 +9,9 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { getAboutContent } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "About Us | Gemora Fine Gems",
+  title: "About Us | Hekathon Gems",
   description:
-    "Gemora Fine Gems is a premier destination for exquisite, ethically sourced gemstones — a heritage of trust since 1888.",
+    "Hekathon Gems is a premier destination for exquisite, ethically sourced gemstones — a heritage of trust since 1888.",
 };
 
 export default async function AboutPage() {
@@ -44,7 +44,7 @@ export default async function AboutPage() {
       <FadeIn className="bg-bg-cream">
         <div className="mx-auto max-w-[1280px] px-4 py-16 text-center sm:px-6">
           <h2 className="font-heading text-2xl text-text-primary-dark">
-            Stay Updated with Gemora
+            Stay Updated with Hekathon Gems
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-text-muted">
             Get the latest collections, stories and exclusive offers.

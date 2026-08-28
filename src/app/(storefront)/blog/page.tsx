@@ -8,9 +8,9 @@ import { Pagination } from "@/components/catalog/Pagination";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 export const metadata: Metadata = {
-  title: "Blog | Gemora Fine Gems",
+  title: "Blog | Hekathon Gems",
   description:
-    "Stories, tips and insights from the world of gemstones and fine jewellery. Stay inspired and informed with Gemora.",
+    "Stories, tips and insights from the world of gemstones and fine jewellery. Stay inspired and informed with Hekathon Gems.",
 };
 
 function first(value: string | string[] | undefined): string | undefined {
@@ -54,7 +54,7 @@ export default async function BlogPage({ searchParams }: PageProps<"/blog">) {
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-sm text-text-muted-light sm:text-base">
             Stories, tips and insights from the world of gemstones and fine
-            jewellery. Stay inspired and informed with Gemora.
+            jewellery. Stay inspired and informed with Hekathon Gems.
           </p>
         </div>
       </section>

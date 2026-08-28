@@ -49,7 +49,7 @@ export function Footer() {
               href="/"
               className="font-heading text-lg font-medium tracking-[0.15em] text-text-primary-light"
             >
-              GEMORA <span className="text-accent-gold">FINE GEMS</span>
+              HEKATHON <span className="text-accent-gold">GEMS</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm">
               Nature&apos;s treasures, crafted for your most precious moments.
@@ -82,7 +82,7 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>+1 (800) 123 4567</li>
-              <li>hello@gemora.com</li>
+              <li>hello@hekathongems.com</li>
               <li>123 Gem Street, New York, NY 10001, USA</li>
             </ul>
           </div>
@@ -102,7 +102,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-border-dark pt-6 text-xs">
-          © 2024 Gemora Fine Gems. All Rights Reserved.
+          © 2026 Hekathon Gems. All Rights Reserved.
         </div>
       </div>
     </footer>

@@ -19,7 +19,7 @@ export function Header() {
           href="/"
           className="font-heading text-lg font-medium tracking-[0.15em] text-text-primary-light"
         >
-          GEMORA <span className="text-accent-gold">FINE GEMS</span>
+          HEKATHON <span className="text-accent-gold">GEMS</span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">

@@ -34,7 +34,7 @@ export default async function OrderConfirmationPage({
         Order Confirmed
       </h1>
       <p className="mt-2 text-sm text-text-muted">
-        Thank you for choosing Gemora Fine Gems.
+        Thank you for choosing Hekathon Gems.
       </p>
 
       <div className="mt-8 flex flex-col items-center rounded-md border border-border bg-bg-white px-6 py-12 text-center">
@@ -143,7 +143,7 @@ export default async function OrderConfirmationPage({
           </span>
           <span className="inline-flex items-center gap-2">
             <Mail className="h-4 w-4 text-accent-gold" strokeWidth={1.5} />
-            hello@gemora.com
+            hello@hekathongems.com
           </span>
         </div>
         <LinkButton href="/contact" variant="accent" className="mt-6">

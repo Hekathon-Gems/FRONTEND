@@ -19,7 +19,7 @@ export default function GlobalError({
           <h1 style={{ fontSize: "1.5rem" }}>Something went wrong.</h1>
           <p style={{ marginTop: "0.75rem", color: "#666" }}>
             Please refresh the page. If this keeps happening, contact us at
-            hello@gemora.com.
+            hello@hekathongems.com.
           </p>
         </div>
       </body>
